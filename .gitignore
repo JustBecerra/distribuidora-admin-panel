@@ -22,6 +22,3 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
-# security
-src/users.json
