@@ -5,21 +5,19 @@ export const BookList = () => (
   <List>
     <Datagrid rowClick="edit">
       <TextField source="id" />
-      <TextField source="ISBN" />
-      <TextField source="Título" />
-      <TextField source="Precio" />
-      <TextField source="Autor" />
-      <TextField source="Genero" />
-      <TextField source="Etiqueta" />
-      <TextField source="Editorial" />
-      <TextField source="Paginas" />
-      <TextField source="Tamaño" />
-      <TextField source="Peso" />
-      <TextField source="Idioma" />
-      <TextField source="fecha_publicacion" />
-      <TextField source="sinopsis" />
-      <TextField source="recomendado" />
-      <TextField source="imagen_portada" />
+      <TextField source="isbn" />
+      <TextField source="name" />
+      <TextField source="price" />
+      <TextField source="tags" />
+      <TextField source="available" />
+      <TextField source="total_pages_number" />
+      <TextField source="size" />
+      <TextField source="weight" />
+      <TextField source="language" />
+      <TextField source="publication_date" />
+      <TextField source="description" />
+      <TextField source="recommended" />
+      <TextField source="image" />
     </Datagrid>
   </List>
 );
