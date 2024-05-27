@@ -6,7 +6,7 @@ export const customDataProvider = {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
 
-    const url = `${apiUrl}/${resource}?_page=${page}&_limit=${perPage}&_sorts=${field}&_order=${order}`;
+    const url = `${apiUrl}/${resource}?_page=${page}&_limit=${perPage}&_sort=${field}&_order=${order}`;
     const response = await fetchUtils.fetchJson(url);
     const data = await response.json;
 
@@ -19,7 +19,11 @@ export const customDataProvider = {
 
     return {
       data: paginatedData,
-      total: parseInt(response.headers.get("x-total-count") || "1", 10),
+      pageInfo: {
+        hasPreviousPage: false,
+        hasNextPage: true,
+      },
+      // total: parseInt(response.headers.get("x-total-count") || "1", 10),
     };
   },
   getOne: (resource: string, params: any) => {
