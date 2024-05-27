@@ -2,7 +2,6 @@ import { Admin, Resource } from "react-admin";
 import { customDataProvider } from "./dataProvider";
 import { authProvider } from "./authProvider";
 import { BookList } from "../components/BookList";
-import { ListEdit } from "../components/ListEdit";
 import { i18nProvider } from "./i18Provider";
 
 export const App = () => (
@@ -12,6 +11,6 @@ export const App = () => (
     dataProvider={customDataProvider}
     authProvider={authProvider}
   >
-    <Resource name="libros" list={BookList} />
+    <Resource name="librosfiltrados" list={BookList} />
   </Admin>
 );

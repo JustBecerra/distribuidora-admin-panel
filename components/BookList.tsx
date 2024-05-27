@@ -1,14 +1,33 @@
 import React from "react";
-import { Datagrid, DateField, List, Pagination, TextField } from "react-admin";
+import {
+  Datagrid,
+  DateField,
+  List,
+  Pagination,
+  SearchInput,
+  TextField,
+  TextInput,
+} from "react-admin";
+import { ActionsList } from "./ActionsList";
+
+const postFilters = [
+  <SearchInput source="name" alwaysOn />,
+  <TextInput label="Titulo" source="name" />,
+];
 
 export const BookList = () => (
-  <List pagination={<Pagination />}>
+  <List
+    actions={<ActionsList />}
+    filters={postFilters}
+    pagination={<Pagination />}
+  >
     <Datagrid>
       <TextField source="id" label="ID" />
       <TextField source="isbn" label="ISBN" />
       <TextField
         source="name"
         label="Título"
+        sortable={true}
         style={{
           maxWidth: "50px",
           overflow: "hidden",
@@ -30,7 +49,6 @@ export const BookList = () => (
       <TextField source="available" label="Unidades Disponibles" />
       <TextField source="total_pages_number" label="Paginas" />
       <TextField source="size" label="Tamaño" />
-      <TextField source="weight" label="Peso" />
       <TextField source="language" label="Idioma" />
       <DateField source="publication_date" label="Fecha de Publicación" />
       <TextField

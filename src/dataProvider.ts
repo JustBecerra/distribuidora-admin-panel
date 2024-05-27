@@ -10,20 +10,12 @@ export const customDataProvider = {
     const response = await fetchUtils.fetchJson(url);
     const data = await response.json;
 
-    // Calculo el principio y final de la pagina actual
-    const start = (page - 1) * perPage;
-    const end = page * perPage;
-
-    // corto la data en menores cantidades para renderizar en la pagina actual
-    const paginatedData = data.slice(start, end);
-
     return {
-      data: paginatedData,
+      data: data.data,
       pageInfo: {
         hasPreviousPage: false,
         hasNextPage: true,
       },
-      // total: parseInt(response.headers.get("x-total-count") || "1", 10),
     };
   },
   getOne: (resource: string, params: any) => {
