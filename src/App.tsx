@@ -13,6 +13,5 @@ export const App = () => (
     authProvider={authProvider}
   >
     <Resource name="libros" list={BookList} />
-    <Resource name="posts" edit={ListEdit} />
   </Admin>
 );

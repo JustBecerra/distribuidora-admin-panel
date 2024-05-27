@@ -1,9 +1,9 @@
 import React from "react";
-import { Datagrid, DateField, ImageField, List, TextField } from "react-admin";
+import { Datagrid, DateField, List, Pagination, TextField } from "react-admin";
 
 export const BookList = () => (
-  <List>
-    <Datagrid rowClick="edit">
+  <List perPage={20} pagination={<Pagination />}>
+    <Datagrid>
       <TextField source="id" label="ID" />
       <TextField source="isbn" label="ISBN" />
       <TextField source="name" label="Título" />
