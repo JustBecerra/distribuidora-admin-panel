@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Datagrid,
+  DatagridConfigurable,
   DateField,
   List,
   Pagination,
@@ -21,7 +22,7 @@ export const BookList = () => (
     filters={postFilters}
     pagination={<Pagination />}
   >
-    <Datagrid>
+    <DatagridConfigurable>
       <TextField source="id" label="ID" />
       <TextField source="isbn" label="ISBN" />
       <TextField
@@ -56,7 +57,7 @@ export const BookList = () => (
         label="Descripción"
         cellClassName="truncate-text"
       />
-    </Datagrid>
+    </DatagridConfigurable>
   </List>
 );
 
