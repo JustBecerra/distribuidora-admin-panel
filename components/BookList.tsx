@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Datagrid,
   DatagridConfigurable,
   DateField,
   List,
@@ -12,8 +11,8 @@ import {
 import { ActionsList } from "./ActionsList";
 
 const postFilters = [
-  <SearchInput source="name" alwaysOn />,
-  <TextInput label="Titulo" source="name" />,
+  <SearchInput source="q" alwaysOn />,
+  <TextInput label="Título" source="name" />,
 ];
 
 export const BookList = () => (
@@ -28,7 +27,6 @@ export const BookList = () => (
       <TextField
         source="name"
         label="Título"
-        sortable={true}
         style={{
           maxWidth: "50px",
           overflow: "hidden",
@@ -39,7 +37,7 @@ export const BookList = () => (
       <TextField source="price" label="Precio" />
       <TextField
         source="tags"
-        label="Genero"
+        label="Género"
         style={{
           maxWidth: "50px",
           overflow: "hidden",
@@ -48,7 +46,7 @@ export const BookList = () => (
         }}
       />
       <TextField source="available" label="Unidades Disponibles" />
-      <TextField source="total_pages_number" label="Paginas" />
+      <TextField source="total_pages_number" label="Páginas" />
       <TextField source="size" label="Tamaño" />
       <TextField source="language" label="Idioma" />
       <DateField source="publication_date" label="Fecha de Publicación" />
