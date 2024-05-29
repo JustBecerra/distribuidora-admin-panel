@@ -5,7 +5,7 @@ export const CreateForm = () => {
   return (
     <Create title="Agregar Libro" resource="Agregar libro">
       <Typography fontSize="2rem" ml="1rem" mt="1rem" mb="1rem">
-        Nuevo Libro
+        Agregar Libro
       </Typography>
       <Box ml="1rem" width="60%">
         <Form>
@@ -17,13 +17,13 @@ export const CreateForm = () => {
             alignItems="center"
           >
             <Grid item xs={6}>
-              <TextInput source="name" label="Título" fullWidth />
+              <TextInput source="name" label="Título" fullWidth isRequired />
             </Grid>
             <Grid item xs={6}>
-              <TextInput source="isbn" label="ISBN" fullWidth />
+              <TextInput source="isbn" label="ISBN" fullWidth isRequired />
             </Grid>
             <Grid item xs={6}>
-              <TextInput source="price" label="Precio" fullWidth />
+              <TextInput source="price" label="Precio" fullWidth isRequired />
             </Grid>
             <Grid item xs={6}>
               <TextInput source="tags" label="Género" fullWidth />
@@ -33,6 +33,7 @@ export const CreateForm = () => {
                 source="available"
                 label="Unidades Disponibles"
                 fullWidth
+                isRequired
               />
             </Grid>
             <Grid item xs={6}>
@@ -46,7 +47,12 @@ export const CreateForm = () => {
               <TextInput source="size" label="Tamaño" fullWidth />
             </Grid>
             <Grid item xs={6}>
-              <TextInput source="language" label="Idioma" fullWidth />
+              <TextInput
+                source="language"
+                label="Idioma"
+                fullWidth
+                isRequired
+              />
             </Grid>
             <Grid item xs={6}>
               <DateInput
@@ -54,6 +60,7 @@ export const CreateForm = () => {
                 source="publication_date"
                 defaultValue={new Date()}
                 fullWidth
+                isRequired
               />
             </Grid>
             <Grid item xs={6}>
@@ -62,6 +69,7 @@ export const CreateForm = () => {
                 multiline={true}
                 label="Descripción"
                 fullWidth
+                isRequired
               />
             </Grid>
           </Grid>

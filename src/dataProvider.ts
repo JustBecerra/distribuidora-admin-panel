@@ -25,7 +25,7 @@ export const customDataProvider = {
     const data = await response.json;
 
     return {
-      data: data.data ? data.data : data,
+      data: data.data || data,
       pageInfo: {
         hasPreviousPage: false,
         hasNextPage: true,
