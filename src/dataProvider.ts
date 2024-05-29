@@ -1,6 +1,6 @@
 import { fetchUtils } from "react-admin";
 const apiUrl = "http://localhost:3000";
-
+const httpClient = fetchUtils.fetchJson;
 export const customDataProvider = {
   getList: async (resource, params) => {
     const { page, perPage } = params.pagination;
@@ -25,7 +25,7 @@ export const customDataProvider = {
     const data = await response.json;
 
     return {
-      data: data.data ? data.data : data,
+      data: data.data || data,
       pageInfo: {
         hasPreviousPage: false,
         hasNextPage: true,
@@ -45,7 +45,12 @@ export const customDataProvider = {
     return Promise.resolve({ data: null });
   },
   create: (resource: string, params: any) => {
-    return Promise.resolve({ data: null });
+    return httpClient(`${apiUrl}/${resource}`, {
+      method: "POST",
+      body: JSON.stringify(params.data),
+    }).then(({ json }) => ({
+      data: { ...params.data, id: json.id },
+    }));
   },
   delete: (resource: string, params: any) => {
     return Promise.resolve({ data: null });
