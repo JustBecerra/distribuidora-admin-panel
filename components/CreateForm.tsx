@@ -1,14 +1,25 @@
 import React from "react";
-import { Create, DateInput, Form, SaveButton, TextInput } from "react-admin";
+import {
+  Create,
+  DateInput,
+  Form,
+  SaveButton,
+  TextInput,
+  useCreate,
+} from "react-admin";
 import { Grid, Typography, Box } from "@mui/material";
 export const CreateForm = () => {
+  const [create] = useCreate();
+  const postSave = (data) => {
+    create("libros", { data });
+  };
   return (
     <Create title="Agregar Libro" resource="Agregar libro">
       <Typography fontSize="2rem" ml="1rem" mt="1rem" mb="1rem">
         Agregar Libro
       </Typography>
       <Box ml="1rem" width="60%">
-        <Form>
+        <Form onSubmit={postSave}>
           <Grid
             container
             spacing="16"
