@@ -1,7 +1,9 @@
 import React from "react";
 import {
+  BooleanField,
   DatagridConfigurable,
   DateField,
+  ImageField,
   List,
   Pagination,
   SearchInput,
@@ -45,11 +47,14 @@ export const BookList = () => (
           whiteSpace: "nowrap",
         }}
       />
+      <BooleanField source="recommended" label="Recomendado" />
       <TextField source="available" label="Unidades Disponibles" />
       <TextField source="total_pages_number" label="Páginas" />
       <TextField source="size" label="Tamaño" />
+      <TextField source="weight" label="Peso" />
       <TextField source="language" label="Idioma" />
       <DateField source="publication_date" label="Fecha de Publicación" />
+      <ImageField source="image" label="Imagen" />
       <TextField
         source="description"
         label="Descripción"

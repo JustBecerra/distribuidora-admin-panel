@@ -1,8 +1,11 @@
 import React from "react";
 import {
+  BooleanInput,
   Create,
   DateInput,
   Form,
+  ImageField,
+  ImageInput,
   SaveButton,
   TextInput,
   useCreate,
@@ -18,7 +21,7 @@ export const CreateForm = () => {
       <Typography fontSize="2rem" ml="1rem" mt="1rem" mb="1rem">
         Agregar Libro
       </Typography>
-      <Box ml="1rem" width="60%">
+      <Box ml="1rem" width="100%">
         <Form onSubmit={postSave}>
           <Grid
             container
@@ -75,6 +78,9 @@ export const CreateForm = () => {
               />
             </Grid>
             <Grid item xs={6}>
+              <TextInput source="weight" label="Peso" fullWidth />
+            </Grid>
+            <Grid item xs={6}>
               <TextInput
                 source="description"
                 multiline={true}
@@ -82,6 +88,34 @@ export const CreateForm = () => {
                 fullWidth
                 isRequired
               />
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <BooleanInput
+                source="recommended"
+                label="Libro recomendado"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <ImageInput
+                source="image"
+                label="Imagen"
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <ImageField source="src" title="title" />
+              </ImageInput>
             </Grid>
           </Grid>
           <SaveButton style={{ marginBottom: "1rem" }} />
