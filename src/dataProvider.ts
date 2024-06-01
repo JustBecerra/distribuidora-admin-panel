@@ -32,8 +32,15 @@ export const customDataProvider = {
       },
     };
   },
-  getOne: (resource: string, params: any) => {
-    return Promise.resolve({ data: null });
+  getOne: async (resource: string, params: any) => {
+    const { id } = params;
+    const url = new URL(`${apiUrl}/libros/${id}`);
+
+    const response = await fetchUtils.fetchJson(url.toString());
+    const data = await response.json;
+    return {
+      data,
+    };
   },
   getMany: (resource: string, params: any) => {
     return Promise.resolve({ data: [] });
