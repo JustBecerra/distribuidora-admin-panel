@@ -48,15 +48,21 @@ export const customDataProvider = {
   getManyReference: (resource: string, params: any) => {
     return Promise.resolve({ data: [] });
   },
-  update: (resource: string, params: any) => {
+  update: async (resource: string, params: any) => {
     const { data, id } = params;
-    const url = `${apiUrl}/libro/${id}`;
-    return httpClient(url, {
+    const url = new URL(`${apiUrl}/libro/${id}`);
+
+    const response = await fetchUtils.fetchJson(url.toString(), {
       method: "PUT",
       body: JSON.stringify(data),
-    }).then(({ json }) => ({
+      headers: new Headers({ "Content-Type": "application/json" }),
+    });
+
+    const json = await response.json;
+
+    return {
       data: { ...data, id: json.id },
-    }));
+    };
   },
   create: (resource: string, params: any) => {
     return httpClient(`${apiUrl}/${resource}`, {

@@ -21,18 +21,20 @@ const EditToolbar = (props) => (
 );
 
 export const EditForm = () => {
-  // const notify = useNotify();
-  // const redirect = useRedirect();
+  const notify = useNotify();
+  const redirect = useRedirect();
 
-  // const onSuccess = () => {
-  //   notify(`Libro actualizado correctamente`);
-  //   redirect("/librosfiltrados");
-  // };
+  const onSuccess = () => {
+    notify(`Libro actualizado correctamente`);
+    redirect("/librosfiltrados");
+  };
+
   return (
     <Edit
       title="Editar Libro"
       resource="Editar libro"
-      // mutationOptions={{ onSuccess }}
+      mutationMode="pessimistic"
+      mutationOptions={{ onSuccess }}
     >
       <Typography fontSize="2rem" ml="1rem" mt="1rem" mb="1rem">
         Agregar Libro
