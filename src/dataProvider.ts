@@ -49,11 +49,13 @@ export const customDataProvider = {
     return Promise.resolve({ data: [] });
   },
   update: (resource: string, params: any) => {
-    return httpClient(`${apiUrl}/${resource}`, {
+    const { data, id } = params;
+    const url = `${apiUrl}/libro/${id}`;
+    return httpClient(url, {
       method: "PUT",
-      body: JSON.stringify(params.data),
+      body: JSON.stringify(data),
     }).then(({ json }) => ({
-      data: { ...params.data, id: json.id },
+      data: { ...data, id: json.id },
     }));
   },
   create: (resource: string, params: any) => {

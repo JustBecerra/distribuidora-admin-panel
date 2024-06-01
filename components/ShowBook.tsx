@@ -3,7 +3,6 @@ import {
   BooleanField,
   DateField,
   ImageField,
-  RichTextField,
   Show,
   SimpleShowLayout,
   TextField,

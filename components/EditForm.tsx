@@ -3,28 +3,42 @@ import {
   BooleanInput,
   DateInput,
   Edit,
-  Form,
   ImageField,
   ImageInput,
   SaveButton,
+  SimpleForm,
   TextInput,
-  useUpdate,
+  Toolbar,
+  useNotify,
+  useRedirect,
 } from "react-admin";
 import { Grid, Typography, Box } from "@mui/material";
-export const EditForm = () => {
-  const [update, { data, isLoading, error }] = useUpdate("libros");
 
-  const postUpdate = () => {
-    // update("libros", { id: record.id, data: diff, previousData: record });
-    console.log(data);
-  };
+const EditToolbar = (props) => (
+  <Toolbar {...props}>
+    <SaveButton />
+  </Toolbar>
+);
+
+export const EditForm = () => {
+  // const notify = useNotify();
+  // const redirect = useRedirect();
+
+  // const onSuccess = () => {
+  //   notify(`Libro actualizado correctamente`);
+  //   redirect("/librosfiltrados");
+  // };
   return (
-    <Edit title="Editar Libro" resource="Editar libro">
+    <Edit
+      title="Editar Libro"
+      resource="Editar libro"
+      // mutationOptions={{ onSuccess }}
+    >
       <Typography fontSize="2rem" ml="1rem" mt="1rem" mb="1rem">
         Agregar Libro
       </Typography>
       <Box ml="1rem" width="100%">
-        <Form onSubmit={postUpdate}>
+        <SimpleForm toolbar={<EditToolbar />}>
           <Grid
             container
             spacing="16"
@@ -120,8 +134,7 @@ export const EditForm = () => {
               </ImageInput>
             </Grid>
           </Grid>
-          <SaveButton style={{ marginBottom: "1rem" }} />
-        </Form>
+        </SimpleForm>
       </Box>
     </Edit>
   );
