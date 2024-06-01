@@ -42,7 +42,12 @@ export const customDataProvider = {
     return Promise.resolve({ data: [] });
   },
   update: (resource: string, params: any) => {
-    return Promise.resolve({ data: null });
+    return httpClient(`${apiUrl}/${resource}`, {
+      method: "PUT",
+      body: JSON.stringify(params.data),
+    }).then(({ json }) => ({
+      data: { ...params.data, id: json.id },
+    }));
   },
   create: (resource: string, params: any) => {
     return httpClient(`${apiUrl}/${resource}`, {
