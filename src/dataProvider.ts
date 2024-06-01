@@ -32,8 +32,15 @@ export const customDataProvider = {
       },
     };
   },
-  getOne: (resource: string, params: any) => {
-    return Promise.resolve({ data: null });
+  getOne: async (resource: string, params: any) => {
+    const { id } = params;
+    const url = new URL(`${apiUrl}/libros/${id}`);
+
+    const response = await fetchUtils.fetchJson(url.toString());
+    const data = await response.json;
+    return {
+      data,
+    };
   },
   getMany: (resource: string, params: any) => {
     return Promise.resolve({ data: [] });
@@ -41,8 +48,21 @@ export const customDataProvider = {
   getManyReference: (resource: string, params: any) => {
     return Promise.resolve({ data: [] });
   },
-  update: (resource: string, params: any) => {
-    return Promise.resolve({ data: null });
+  update: async (resource: string, params: any) => {
+    const { data, id } = params;
+    const url = new URL(`${apiUrl}/libro/${id}`);
+
+    const response = await fetchUtils.fetchJson(url.toString(), {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: new Headers({ "Content-Type": "application/json" }),
+    });
+
+    const json = await response.json;
+
+    return {
+      data: { ...data, id: json.id },
+    };
   },
   create: (resource: string, params: any) => {
     return httpClient(`${apiUrl}/${resource}`, {

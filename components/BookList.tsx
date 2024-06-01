@@ -23,7 +23,7 @@ export const BookList = () => (
     filters={postFilters}
     pagination={<Pagination />}
   >
-    <DatagridConfigurable>
+    <DatagridConfigurable rowClick="show">
       <TextField source="id" label="ID" />
       <TextField source="isbn" label="ISBN" />
       <TextField
