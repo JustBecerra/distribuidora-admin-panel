@@ -7,12 +7,13 @@ import {
   SimpleShowLayout,
   TextField,
 } from "react-admin";
+import { Divider } from "@mui/material";
 
 export const ShowBook = (props) => {
   const { basePath, resource } = props;
   return (
     <Show basePath={basePath} resource={resource} {...props}>
-      <SimpleShowLayout>
+      <SimpleShowLayout divider={<Divider flexItem />}>
         <TextField source="id" label="ID" />
         <TextField source="isbn" label="ISBN" />
         <TextField
