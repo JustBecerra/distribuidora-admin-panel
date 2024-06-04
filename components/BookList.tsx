@@ -3,7 +3,6 @@ import {
   BooleanField,
   DatagridConfigurable,
   DateField,
-  ImageField,
   List,
   Pagination,
   SearchInput,
@@ -54,7 +53,7 @@ export const BookList = () => (
       <TextField source="weight" label="Peso" />
       <TextField source="language" label="Idioma" />
       <DateField source="publication_date" label="Fecha de Publicación" />
-      <ImageField source="image" label="Imagen" />
+      <TextField source="image" label="Imagen" />
       <TextField
         source="description"
         label="Descripción"

@@ -2,7 +2,6 @@ import React from "react";
 import {
   BooleanField,
   DateField,
-  ImageField,
   Show,
   SimpleShowLayout,
   TextField,
@@ -44,7 +43,7 @@ export const ShowBook = (props) => {
         <TextField source="weight" label="Peso" />
         <TextField source="language" label="Idioma" />
         <DateField source="publication_date" label="Fecha de Publicación" />
-        <ImageField source="image" label="Imagen" />
+        <TextField source="image" label="Imagen" />
         <TextField
           source="description"
           label="Descripción"
