@@ -9,12 +9,17 @@ import {
   SaveButton,
   TextInput,
   useCreate,
+  useNotify,
 } from "react-admin";
 import { Grid, Typography, Box } from "@mui/material";
 export const CreateForm = () => {
   const [create] = useCreate();
+  const notify = useNotify();
+  // const redirect = useRedirect();
   const postSave = (data) => {
     create("libros", { data });
+    notify(`Libro agregado correctamente`);
+    // redirect("/librosfiltrados");
   };
   return (
     <Create title="Agregar Libro" resource="Agregar libro">
