@@ -46,11 +46,6 @@ const SendFile = () => {
 
   return (
     <Box>
-      {/* <input type="file" accept=".csv" onChange={handleFileChange} /> */}
-      {/* <Typography>
-        Recuerde que el archivo sea de tipo CSV y que las columnas esten
-        ordenadas como en la base de datos
-      </Typography> */}
       <FormControl>
         <Button
           component="label"
@@ -62,7 +57,6 @@ const SendFile = () => {
           Cargar archivo
           <VisuallyHiddenInput />
         </Button>
-        {/* <Button onClick={handleUpload}>Cargar</Button> */}
       </FormControl>
     </Box>
   );

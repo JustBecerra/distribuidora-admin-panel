@@ -3,7 +3,7 @@ import { Input } from "@mui/material";
 export const VisuallyHiddenInput = () => {
   return (
     <Input
-      type="hidden"
+      type="file"
       sx={{
         clip: "rect(0 0 0 0)",
         clipPath: "inset(50%)",
