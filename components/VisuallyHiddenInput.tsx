@@ -1,9 +1,14 @@
-import React from "react";
 import { Input } from "@mui/material";
-export const VisuallyHiddenInput = () => {
+
+interface props {
+  handleFileChange: (event: any) => void;
+}
+
+export const VisuallyHiddenInput = ({ handleFileChange }: props) => {
   return (
     <Input
       type="file"
+      onChange={handleFileChange}
       sx={{
         clip: "rect(0 0 0 0)",
         clipPath: "inset(50%)",

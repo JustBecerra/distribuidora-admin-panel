@@ -1,52 +1,48 @@
-import React, { useState } from "react";
-import { SaveButton, useNotify, useRefresh } from "react-admin";
-import Papa from "papaparse";
-import { FormControl, Button, Typography, Box } from "@mui/material";
+import { FormControl, Button, Box } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { useState } from "react";
+import { fetchUtils } from "react-admin";
 import { VisuallyHiddenInput } from "./VisuallyHiddenInput";
+
 const SendFile = () => {
-  const [file, setFile] = useState(null);
-  const notify = useNotify();
-  const refresh = useRefresh();
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+    console.log("file", event.target.files);
+    const file = event.target.files[0];
+    setSelectedFile(file);
   };
 
-  const handleUpload = () => {
-    if (!file) {
-      notify("No file selected");
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      alert("No file selected!");
       return;
     }
 
-    // Parse CSV file
-    Papa.parse(file, {
-      header: true,
-      complete: (results) => {
-        const data = results.data;
-        // Send data to backend
-        fetch("/api/upload-csv", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then(() => {
-            notify("File uploaded successfully");
-            refresh(); // Refresh the page or data
-          })
-          .catch((error) => {
-            notify(`Error: ${error.message}`);
-          });
-      },
-    });
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const response = await fetchUtils.fetchJson(
+        "http://localhost:3000/libros",
+        {
+          method: "PUT",
+          body: formData,
+          // No need to manually set Content-Type for FormData
+        }
+      );
+      const json = await response.json(); // Parentheses added here
+      console.log("File uploaded successfully:", json);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
 
   return (
     <Box>
-      <FormControl>
+      <FormControl
+        sx={{ display: "flex", flexDirection: "row", gap: "0.5rem" }}
+      >
         <Button
           component="label"
           role={undefined}
@@ -55,8 +51,9 @@ const SendFile = () => {
           startIcon={<CloudUploadIcon />}
         >
           Cargar archivo
-          <VisuallyHiddenInput />
+          <VisuallyHiddenInput handleFileChange={handleFileChange} />
         </Button>
+        <Button onClick={handleUpload}>Confirmar</Button>
       </FormControl>
     </Box>
   );

@@ -10,7 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 import SendFile from "./SendFile";
 
 export const ActionsList = () => (
-  <TopToolbar sx={{ gap: "0.5rem" }}>
+  <TopToolbar sx={{ gap: "0.5rem", display: "flex", alignItems: "center" }}>
     {/* <Link component={RouterLink} to="/sendfile">
       Cargar CSV
     </Link> */}
