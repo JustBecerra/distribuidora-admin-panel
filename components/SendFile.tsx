@@ -28,11 +28,11 @@ const SendFile = () => {
         {
           method: "PUT",
           body: formData,
-          // No need to manually set Content-Type for FormData
         }
       );
-      const json = await response.json(); // Parentheses added here
-      console.log("File uploaded successfully:", json);
+      console.log("File uploaded successfully:");
+      alert("file uploaded!");
+      location.reload();
     } catch (error) {
       console.error("Error uploading file:", error);
     }
