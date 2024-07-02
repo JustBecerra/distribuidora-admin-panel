@@ -17,7 +17,7 @@ const postFilters = [
 
 export const BookList = () => (
   <List
-    actions={<ActionsList />}
+    actions={<ActionsList resource="libros" />}
     filters={postFilters}
     pagination={<Pagination />}
   >

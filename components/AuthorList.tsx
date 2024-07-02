@@ -1,10 +1,26 @@
-import { DatagridConfigurable, List, Pagination, TextField } from "react-admin";
+import {
+  DatagridConfigurable,
+  List,
+  Pagination,
+  SearchInput,
+  TextField,
+  TextInput,
+} from "react-admin";
 import React from "react";
 import { ActionsList } from "./ActionsList";
 
+const postFilters = [
+  <SearchInput source="q" alwaysOn />,
+  <TextInput label="Título" source="name" />,
+];
+
 export const AuthorList = () => {
   return (
-    <List actions={<ActionsList />} pagination={<Pagination />}>
+    <List
+      actions={<ActionsList />}
+      filters={postFilters}
+      pagination={<Pagination />}
+    >
       <DatagridConfigurable rowClick="show">
         <TextField source="id" label="ID" />
         <TextField source="name" label="Nombre" />

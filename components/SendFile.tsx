@@ -4,7 +4,7 @@ import { useState } from "react";
 import { fetchUtils } from "react-admin";
 import { VisuallyHiddenInput } from "./VisuallyHiddenInput";
 
-const SendFile = () => {
+const SendFile = ({ resource }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -24,7 +24,7 @@ const SendFile = () => {
 
     try {
       const response = await fetchUtils.fetchJson(
-        "http://localhost:3000/libros",
+        `http://localhost:3000/${resource}`,
         {
           method: "PUT",
           body: formData,
