@@ -1,16 +1,10 @@
-import {
-  CreateButton,
-  ExportButton,
-  SelectColumnsButton,
-  TopToolbar,
-} from "react-admin";
+import { ExportButton, SelectColumnsButton, TopToolbar } from "react-admin";
 import SendFile from "./SendFile";
 
-export const ActionsList = () => (
+export const ActionsList = ({ resource }) => (
   <TopToolbar sx={{ gap: "0.5rem", display: "flex", alignItems: "center" }}>
-    <SendFile />
+    <SendFile resource={resource} />
     <SelectColumnsButton />
-    <CreateButton />
     <ExportButton />
   </TopToolbar>
 );
