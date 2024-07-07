@@ -3,14 +3,19 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useState } from "react";
 import { fetchUtils } from "react-admin";
 import { VisuallyHiddenInput } from "./VisuallyHiddenInput";
+import Papa from "papaparse";
 
 const SendFile = ({ resource }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
-    console.log("file", event.target.files);
     const file = event.target.files[0];
-    setSelectedFile(file);
+    Papa.parse(file, {
+      header: true,
+      complete: (results) => {
+        setSelectedFile(results.data);
+      },
+    });
   };
 
   const handleUpload = async () => {
@@ -19,20 +24,22 @@ const SendFile = ({ resource }) => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-
     try {
-      const response = await fetchUtils.fetchJson(
-        `http://localhost:3000/${resource}`,
-        {
-          method: "PUT",
-          body: formData,
-        }
-      );
-      console.log("File uploaded successfully:");
-      alert("file uploaded!");
-      location.reload();
+      const response = await fetch(`http://localhost:3000/${resource}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(selectedFile),
+      });
+
+      if (response.ok) {
+        console.log("File uploaded successfully:");
+        alert("File uploaded!");
+        location.reload();
+      } else {
+        console.error("Error uploading file:", response.statusText);
+      }
     } catch (error) {
       console.error("Error uploading file:", error);
     }
