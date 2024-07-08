@@ -8,6 +8,8 @@ import { i18nProvider } from "./i18Provider";
 import { ShowBook } from "../components/ShowBook";
 import { EditorialList } from "../components/EditorialList";
 import { AuthorList } from "../components/AuthorList";
+import { GenderList } from "../components/GenderList";
+
 export const App = () => {
   return (
     <Admin
@@ -31,6 +33,7 @@ export const App = () => {
       />
       <Resource name="editorialesfiltradas" list={EditorialList} />
       <Resource name="autoresfiltrados" list={AuthorList} />
+      <Resource name="generosfiltrados" list={GenderList} />
     </Admin>
   );
 };
