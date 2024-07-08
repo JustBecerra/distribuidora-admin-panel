@@ -17,7 +17,7 @@ const postFilters = [
 export const AuthorList = () => {
   return (
     <List
-      actions={<ActionsList />}
+      actions={<ActionsList resource={"autores"} />}
       filters={postFilters}
       pagination={<Pagination />}
     >
