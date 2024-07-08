@@ -1,5 +1,6 @@
 import { fetchUtils } from "react-admin";
-const apiUrl = "http://localhost:3000";
+// const apiUrl = "http://localhost:3000";
+const apiUrl = "https://backend-distribuidora-p5f1.vercel.app";
 const httpClient = fetchUtils.fetchJson;
 export const customDataProvider = {
   getList: async (resource, params) => {
