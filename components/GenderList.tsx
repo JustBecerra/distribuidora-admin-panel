@@ -14,10 +14,10 @@ const postFilters = [
   <TextInput label="Título" source="name" />,
 ];
 
-export const AuthorList = () => {
+export const GenderList = () => {
   return (
     <List
-      actions={<ActionsList resource={"autores"} />}
+      actions={<ActionsList resource={"generos"} />}
       filters={postFilters}
       pagination={<Pagination />}
     >
@@ -25,7 +25,6 @@ export const AuthorList = () => {
         <TextField source="id" label="ID" />
         <TextField source="name" label="Nombre" />
         <TextField source="description" label="Descripción" />
-        <TextField source="date_of_birth" label="Fecha de Nacimiento" />
       </DatagridConfigurable>
     </List>
   );
